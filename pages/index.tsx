@@ -1,97 +1,87 @@
-import Head from 'next/head'
-import Benefits from '../blocks/Benefits';
-import Break from '../blocks/Break';
-import Epilogue from '../blocks/Epilogue';
-import Features from '../blocks/Features';
-import Footer from '../blocks/Footer';
-import Header from '../blocks/Header';
-import Hero from '../blocks/Hero';
-import Highlights from '../blocks/Highlights';
-import Notice from '../components/Notice';
-import * as Global from '../global/global.json';
+import Head from "next/head";
+import Benefits from "../blocks/Benefits";
+import Break from "../blocks/Break";
+import Epilogue from "../blocks/Epilogue";
+import Features from "../blocks/Features";
+import Footer from "../blocks/Footer";
+import Header from "../blocks/Header";
+import Hero from "../blocks/Hero";
+import Highlights from "../blocks/Highlights";
+import Notice from "../components/Notice";
+import Image from "next/image";
+import Link from "next/link";
 
-const LOREM = `
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-  when an unknown printer took a galley of type and scrambled it to make a type
-  specimen book.
-`;
+function NavBar() {
+  return (
+    <div className="flex items-center p-2">
+      <img src={"/logo.png"} alt="logo" className="h-7"></img>
+      <div className="flex-1"></div>
+      <div className="mx-3">
+        <Link href={"/waitlist"}>
+          <p>Drill-Down</p>
+        </Link>
+      </div>
+
+      <div className="mx-3">
+        <Link href={"/waitlist"}>
+          <p>Blog</p>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function Main() {
+  return (
+    <div className="flex flex-col justify-center items-center my-48 text-center">
+      <p className="text-3xl font-semibold my-3">
+        The Context Layer for your metrics
+      </p>
+      <p className="font-light my-3">
+        Supercharge your semantic layer with context for your data consumers.
+        Build actionnable and trusted metrics.
+      </p>
+      <div className="flex">
+        <input
+          className="border border-lime-400 bg-transparent p-2 text-lime-400 decoration-lime-400 placeholder-lime-400"
+          placeholder="Enter your email"
+        ></input>
+        <div className="flex flex-col justify-center items-enter text-center bg-lime-400 px-3 mx-3">
+          <p className="text-black">GET EARLY ACCESS</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CopyrightFooter() {
+  return (
+    <div>
+      <div className="bg-white h-px my-2"></div>
+      <div className="flex justify-center items-center">
+        <div className="max-w-5xl">
+          <div className="flex items-center ">
+            <p className="flex-1">&copy; 2023 Datadrift. All rights reserved</p>
+            <div className="flex-1"></div>
+            <p className="flex-1">Privacy Policy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>{Global.product}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Notice id="subscribed">Thank you for subscribing</Notice>
-      <Header id="top" title={Global.product}/>
-
-      <main>
-        <Hero
-          title="Clear headline that explains your product’s benefit"
-          subtitle="Explain your unique solution, how it solves your customer's problem."
-          illustration=""
-          subscribePlaceholder="you@email.com"
-          subscribeAction="When is it ready?"
-        />
-
-        <Benefits
-          background="alternate"
-          title="Headline that describes how your product solves the problem"
-          subtitle="Start by defining the pain your customer has right now, for example: clients not paying their invoices. Then write how your solution solves this problem for your customers."
-          benefits={[
-            {illustration:'', title:'Main benefit of your product', text:'Brief explanation of why and how this benefit will help your customers'},
-            {illustration:'', title:'Main benefit of your product', text:'Brief explanation of why and how this benefit will help your customers'},
-            {illustration:'', title:'Main benefit of your product', text:'Brief explanation of why and how this benefit will help your customers'},
-          ]}
-        />
-
-        <Break
-          title="Risk Reduction: Try Product free for 14 days"
-          subtitle="This is an in-betwen CTA for visitors that already got convinced."
-          illustration=""
-          action="When is it ready?"
-          onActionClick={() => window.scrollTo({top:99999, behavior:'smooth'})}
-        />
-
-        <Highlights
-          title="Highlights of your product"
-          subtitle="Explain why your solution deserves attention"
-          highlights={[
-            {illustration:'', title:'Now go deeper into what your product offers. Word it as benefits, not as features', text:'“Save your favorite links” is a feature. “Never lose your favorite websites again” is a benefit. Users don’t care about your product, they only care about what’s in it for them.'},
-            {illustration:'', title:'Now go deeper into what your product offers. Word it as benefits, not as features', text:'“Save your favorite links” is a feature. “Never lose your favorite websites again” is a benefit. Users don’t care about your product, they only care about what’s in it for them.'},
-            {illustration:'', title:'Now go deeper into what your product offers. Word it as benefits, not as features', text:'“Save your favorite links” is a feature. “Never lose your favorite websites again” is a benefit. Users don’t care about your product, they only care about what’s in it for them.'},
-          ]}
-        />
-
-        <Features
-          background="alternate"
-          title="But wait, there is more"
-          subtitle="Describe the full extent of your product"
-          features={[
-            {illustration:'', title:'Product feature', text:'Brief explanation of why and how this feature will help your customers'},
-            {illustration:'', title:'Product feature', text:'Brief explanation of why and how this feature will help your customers'},
-            {illustration:'', title:'Product feature', text:'Brief explanation of why and how this feature will help your customers'},
-            {illustration:'', title:'Product feature', text:'Brief explanation of why and how this feature will help your customers'},
-            {illustration:'', title:'Product feature', text:'Brief explanation of why and how this feature will help your customers'},
-            {illustration:'', title:'Product feature', text:'Brief explanation of why and how this feature will help your customers'},
-          ]}
-        />
-
-        <Epilogue
-          title="Ask if your visitor wants to solve problem X today"
-          subtitle="Explain how your solution will solve this problem and ask them to start a free trial, or any other low-key CTA they could take"
-          illustration=""
-          subscribePlaceholder="you@email.com"
-          subscribeAction="When is it ready?"
-        />
-      </main>
-
-      <Footer
-        title={Global.product}
-      />
+      {" "}
+      <div className="flex justify-center items-center">
+        <div className="max-w-5xl">
+          <NavBar></NavBar>
+          <Main></Main>
+        </div>
+      </div>
+      <CopyrightFooter></CopyrightFooter>
     </div>
-  )
+  );
 }
